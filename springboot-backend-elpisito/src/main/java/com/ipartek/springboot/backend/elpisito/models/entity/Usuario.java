@@ -1,17 +1,12 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,21 +20,26 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="tipos")
-public class Tipo implements Serializable{
-	
-	private static final long serialVersionUID = 8691693780713383741L;
-	
+@Table(name="usuarios")
+public class Usuario implements Serializable{
+
+	private static final long serialVersionUID = -5128137720317122129L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column
 	private Long id;
 	
 	@Column
-	private String nombre; // Piso, finca, lonja
+	private String user;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy="tipo", cascade=CascadeType.ALL)
-	private Set<Inmueble> inmuebles;
-
+	@Column 
+	private String password;
+	
+	@Column 
+	private String email;
+	
+	@Column
+	private Integer activo;
+	
 }

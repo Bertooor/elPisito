@@ -1,22 +1,28 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name="inmuebles")
 public class Inmueble implements Serializable{
@@ -28,9 +34,16 @@ public class Inmueble implements Serializable{
 	@Column
 	private Long id;
 	
+	@ManyToOne
+	@JoinColumn(name="tipo")
 	private Tipo tipo;
 	
+	@ManyToOne
+	@JoinColumn(name="poblacion")
 	private Poblacion poblacion;
+	
+	@OneToMany(mappedBy = "inmueble")
+	private Set<Imagen> imagenes;
 	
 	@Column
 	private String via;
