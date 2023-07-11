@@ -8,6 +8,9 @@ import { MenuPrincipalComponent } from './components/menu-principal/menu-princip
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+import { CabeceraFooterComponent } from './components/cabecera-footer/cabecera-footer.component';
+import { MenuFooterComponent } from './components/menu-footer/menu-footer.component';
+import { PieFooterComponent } from './components/pie-footer/pie-footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ErrorComponent } from './components/error/error.component';
     MenuPrincipalComponent,
     FooterComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    CabeceraFooterComponent,
+    MenuFooterComponent,
+    PieFooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -28,6 +29,7 @@ import lombok.ToString;
 @Table(name="tipos")
 public class Tipo implements Serializable{
 	
+	@Serial
 	private static final long serialVersionUID = 8691693780713383741L;
 	
 	@Id
