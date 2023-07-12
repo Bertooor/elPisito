@@ -1,5 +1,6 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
@@ -23,6 +24,7 @@ import lombok.ToString;
 @Table(name="usuarios")
 public class Usuario implements Serializable{
 
+	@Serial
 	private static final long serialVersionUID = -5128137720317122129L;
 
 	@Id

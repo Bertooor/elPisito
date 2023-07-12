@@ -1,5 +1,6 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -27,6 +28,7 @@ import lombok.ToString;
 @Table(name="inmuebles")
 public class Inmueble implements Serializable{
 
+	@Serial
 	private static final long serialVersionUID = 9070269006947248451L;
 	
 	@Id
@@ -42,7 +44,7 @@ public class Inmueble implements Serializable{
 	@JoinColumn(name="poblacion")
 	private Poblacion poblacion;
 	
-	@OneToMany(mappedBy = "inmueble")
+	@OneToMany(mappedBy="inmueble")
 	private Set<Imagen> imagenes;
 	
 	@Column

@@ -1,5 +1,6 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -31,6 +32,7 @@ import lombok.ToString;
 @Table(name="poblaciones")
 public class Poblacion implements Serializable{
 	
+	@Serial
 	private static final long serialVersionUID = -2901928667362501212L;
 	
 	@Id

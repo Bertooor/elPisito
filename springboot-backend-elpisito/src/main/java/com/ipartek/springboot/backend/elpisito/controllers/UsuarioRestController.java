@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ipartek.springboot.backend.elpisito.models.entity.Tipo;
-import com.ipartek.springboot.backend.elpisito.models.services.ITipoService;
+import com.ipartek.springboot.backend.elpisito.models.entity.Usuario;
+import com.ipartek.springboot.backend.elpisito.models.services.IUsuarioService;
 
 @RestController
 @RequestMapping("/api")
-public class TipoRestController {
-	
+public class UsuarioRestController {
+
 	@Autowired
-	private ITipoService tipoService;
+	private IUsuarioService usuarioService;
 	
-	@GetMapping("/tipos")
-	public List<Tipo> findAll(){
-		return tipoService.findAll();
+	@GetMapping("/usuarios")
+	List<Usuario> findAll(){
+		return usuarioService.findAll();
 	};
 	
-	@GetMapping("/tipo/{id}")
-	public Tipo findById(@PathVariable Long id) {
-		return tipoService.findById(id);
+	@GetMapping("/usuario/{id}")
+	public Usuario findById(@PathVariable Long id) {
+		return usuarioService.findById(id);
 	}
 	
-	@PostMapping("/tipo")
-	public Tipo create(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	@PostMapping("/usuario")
+	public Usuario create(@RequestBody Usuario usuario) {
+		return usuarioService.save(usuario);
 	}
 	
-	@PutMapping("/tipo")
-	public Tipo update(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	@PutMapping("/usuario")
+	public Usuario update(@RequestBody Usuario usuario) {
+		return usuarioService.save(usuario);
 	}
 	
-	@DeleteMapping("/tipo/{id}")
+	@DeleteMapping("/usuario/{id}")
 	public void delete(@PathVariable Long id) {
-		tipoService.deleteById(id);
+		usuarioService.deleteById(id);
 	}
 }

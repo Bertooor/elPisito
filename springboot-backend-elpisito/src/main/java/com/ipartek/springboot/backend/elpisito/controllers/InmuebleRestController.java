@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ipartek.springboot.backend.elpisito.models.entity.Tipo;
-import com.ipartek.springboot.backend.elpisito.models.services.ITipoService;
+import com.ipartek.springboot.backend.elpisito.models.entity.Inmueble;
+import com.ipartek.springboot.backend.elpisito.models.services.IInmuebleService;
 
 @RestController
 @RequestMapping("/api")
-public class TipoRestController {
+public class InmuebleRestController {
 	
 	@Autowired
-	private ITipoService tipoService;
+	private IInmuebleService inmuebleService;
 	
-	@GetMapping("/tipos")
-	public List<Tipo> findAll(){
-		return tipoService.findAll();
+	@GetMapping("/inmuebles")
+	List<Inmueble> findAll(){
+		return inmuebleService.findAll();
 	};
 	
-	@GetMapping("/tipo/{id}")
-	public Tipo findById(@PathVariable Long id) {
-		return tipoService.findById(id);
+	@GetMapping("/inmueble/{id}")
+	public Inmueble findById(@PathVariable Long id) {
+		return inmuebleService.findById(id);
 	}
 	
-	@PostMapping("/tipo")
-	public Tipo create(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	@PostMapping("/inmueble")
+	public Inmueble create(@RequestBody Inmueble inmueble) {
+		return inmuebleService.save(inmueble);
 	}
 	
-	@PutMapping("/tipo")
-	public Tipo update(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	@PutMapping("/inmueble")
+	public Inmueble update(@RequestBody Inmueble inmueble) {
+		return inmuebleService.save(inmueble);
 	}
 	
-	@DeleteMapping("/tipo/{id}")
+	@DeleteMapping("/inmueble/{id}")
 	public void delete(@PathVariable Long id) {
-		tipoService.deleteById(id);
+		inmuebleService.deleteById(id);
 	}
 }

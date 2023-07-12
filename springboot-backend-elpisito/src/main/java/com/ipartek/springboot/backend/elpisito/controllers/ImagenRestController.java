@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ipartek.springboot.backend.elpisito.models.entity.Tipo;
-import com.ipartek.springboot.backend.elpisito.models.services.ITipoService;
+import com.ipartek.springboot.backend.elpisito.models.entity.Imagen;
+import com.ipartek.springboot.backend.elpisito.models.services.IImagenService;
 
 @RestController
 @RequestMapping("/api")
-public class TipoRestController {
+public class ImagenRestController {
 	
 	@Autowired
-	private ITipoService tipoService;
+	private IImagenService imagenService;
 	
-	@GetMapping("/tipos")
-	public List<Tipo> findAll(){
-		return tipoService.findAll();
+	@GetMapping("/imagenes")
+	List<Imagen> findAll(){
+		return imagenService.findAll();
 	};
 	
-	@GetMapping("/tipo/{id}")
-	public Tipo findById(@PathVariable Long id) {
-		return tipoService.findById(id);
+	@GetMapping("/imagen/{id}")
+	public Imagen findById(@PathVariable Long id) {
+		return imagenService.findById(id);
 	}
 	
-	@PostMapping("/tipo")
-	public Tipo create(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	@PostMapping("/imagen")
+	public Imagen create(@RequestBody Imagen imagen) {
+		return imagenService.save(imagen);
 	}
 	
-	@PutMapping("/tipo")
-	public Tipo update(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	@PutMapping("/imagen")
+	public Imagen update(@RequestBody Imagen imagen) {
+		return imagenService.save(imagen);
 	}
 	
-	@DeleteMapping("/tipo/{id}")
+	@DeleteMapping("/imagen/{id}")
 	public void delete(@PathVariable Long id) {
-		tipoService.deleteById(id);
+		imagenService.deleteById(id);
 	}
 }

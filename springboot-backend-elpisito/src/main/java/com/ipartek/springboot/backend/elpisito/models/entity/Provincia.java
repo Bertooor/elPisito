@@ -1,9 +1,10 @@
 package com.ipartek.springboot.backend.elpisito.models.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +28,7 @@ import lombok.ToString;
 @Table(name="provincias")
 public class Provincia implements Serializable{
 	
+	@Serial
 	private static final long serialVersionUID = -7043170071241565050L;
 
 	@Id
@@ -37,7 +39,7 @@ public class Provincia implements Serializable{
 	@Column
 	private String nombre;
 	
-	@JsonIgnoreProperties
+	@JsonIgnore
 	@OneToMany(mappedBy="provincia")
 	private Set<Poblacion> poblaciones;
 
