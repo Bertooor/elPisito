@@ -1,0 +1,35 @@
+.contenedor h2 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.contenedor .links {
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor .links a {
+  color: white;
+  text-decoration: none;
+}
+
+.contenedor hr {
+  height: 1px;
+}
+
+@media only screen and (min-width: 768px) {
+  .contenedor {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .contenedor hr {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .contenedor .links a:hover {
+    color: var(--color-amarillo);
+  }
+}

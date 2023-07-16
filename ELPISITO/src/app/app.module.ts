@@ -3,14 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/Header/header/header.component';
 import { MenuPrincipalComponent } from './components/menu-principal/menu-principal.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
-import { ErrorComponent } from './components/error/error.component';
-import { CabeceraFooterComponent } from './components/cabecera-footer/cabecera-footer.component';
-import { MenuFooterComponent } from './components/menu-footer/menu-footer.component';
-import { PieFooterComponent } from './components/pie-footer/pie-footer.component';
+import { FooterComponent } from './components/Footer/footer/footer.component';
+import { HomeComponent } from './components/Main/home/home.component';
+import { ErrorComponent } from './components/Main/error/error.component';
+import { CabeceraFooterComponent } from './components/Footer/cabecera-footer/cabecera-footer.component';
+import { MenuFooterComponent } from './components/Footer/menu-footer/menu-footer.component';
+import { PieFooterComponent } from './components/Footer/pie-footer/pie-footer.component';
+import { ListHomeComponent } from './components/Main/list-home/list-home.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,11 @@ import { PieFooterComponent } from './components/pie-footer/pie-footer.component
     ErrorComponent,
     CabeceraFooterComponent,
     MenuFooterComponent,
-    PieFooterComponent
+    PieFooterComponent,
+    ListHomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

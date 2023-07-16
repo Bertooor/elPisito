@@ -1,0 +1,9 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+img {
+  height: 150px;
+}

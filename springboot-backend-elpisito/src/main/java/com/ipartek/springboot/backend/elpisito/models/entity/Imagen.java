@@ -43,5 +43,7 @@ public class Imagen implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="inmueble")
 	private Inmueble inmueble;
+	
+	
 
 }

@@ -20,6 +20,9 @@
 body,
 html {
   height: 100%;
-  font-size: 16px;
   font-family: "Open Sans", sans-serif;
+  --color-azul: #256197;
+  --color-amarillo: #e8b610;
+  --color-gris: #b1b3b4;
+  --color-azuloscuro: #1f517d;
 }

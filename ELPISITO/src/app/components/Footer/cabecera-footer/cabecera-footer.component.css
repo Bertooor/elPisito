@@ -1,0 +1,100 @@
+/*
+ * ##################
+ * ## First mobile ##
+ * ##################
+*/
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*
+ * #####################
+ * ## Contenedor logo ##
+ * #####################
+ */
+
+.contenedor-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contenedor-logo .logo {
+  filter: invert(1);
+  height: 30px;
+}
+
+.texto-logo {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+/*
+* #############################
+* ## Contenedor aplicaciones ##
+* #############################
+*/
+
+.contenedor-aplicaciones {
+  display: flex;
+  gap: 2rem;
+}
+
+.contenedor-aplicaciones a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  background-color: var(--color-azuloscuro);
+}
+
+.contenedor-aplicaciones p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.7rem;
+  margin-bottom: 0;
+}
+
+.contenedor-aplicaciones p span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/*
+* #######################
+* ## Contenedor iconos ##
+* #######################
+*/
+
+.contenedor-iconos {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contenedor-iconos a {
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .contenedor {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .contenedor-aplicaciones {
+    gap: 1.5rem;
+  }
+}

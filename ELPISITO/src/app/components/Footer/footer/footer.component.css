@@ -1,0 +1,9 @@
+.fondo {
+  background-color: var(--color-azul);
+  color: white;
+  padding-top: 1rem;
+}
+
+hr {
+  color: white;
+}
