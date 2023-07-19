@@ -1,20 +1,7 @@
-<div>
-  <img src="" alt="" />
-  <h3>Titular</h3>
-  <p>67777€</p>
-
-  <div class="contenedor-banhos">
-    <span class="numero-elementos">3</span>
-    <img class="icono" src="assets/img/004-bathtub.svg" alt="icono baño" />
-  </div>
-
-  <div class="contenedor-habitaciones">
-    <span class="numero-elementos">3</span>
-    <img class="icono" src="assets/img/004-bathtub.svg" alt="icono baño" />
-  </div>
-
-  <div class="contenedor-altura">
-    <span class="numero-elementos">3</span>
-    <img class="icono" src="assets/img/004-bathtub.svg" alt="icono baño" />
-  </div>
-</div>
+<section class="contenedor">
+  <h2>{{ titular }}</h2>
+  <app-ficha-inmueble
+    *ngFor="let inmueble of aDatos"
+    [recibeDatos]="inmueble"
+  ></app-ficha-inmueble>
+</section>

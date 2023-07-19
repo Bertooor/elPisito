@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { CabeceraFooterComponent } from './components/Footer/cabecera-footer/cab
 import { MenuFooterComponent } from './components/Footer/menu-footer/menu-footer.component';
 import { PieFooterComponent } from './components/Footer/pie-footer/pie-footer.component';
 import { ListHomeComponent } from './components/Main/list-home/list-home.component';
+import { FichaInmuebleComponent } from './components/Main/ficha-inmueble/ficha-inmueble.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,9 @@ import { ListHomeComponent } from './components/Main/list-home/list-home.compone
     MenuFooterComponent,
     PieFooterComponent,
     ListHomeComponent,
+    FichaInmuebleComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

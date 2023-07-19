@@ -38,4 +38,16 @@ public class InmuebleServiceImpl implements IInmuebleService{
 		inmuebleDAO.deleteById(id);
 	}
 
+	@Override
+	public List<Inmueble> findAllActive() {
+		List<Inmueble> todosLosInmuebles = (List<Inmueble>) inmuebleDAO.findAll();
+		return todosLosInmuebles.stream().filter(inmueble -> inmueble.getActivo().equals(1)).toList();
+	}
+
+	@Override
+	public List<Inmueble> findAllPortada() {
+		List<Inmueble> todosLosInmuebles = (List<Inmueble>) inmuebleDAO.findAll();
+		return todosLosInmuebles.stream().filter(inmueble -> inmueble.getPortada().equals(1)).toList();
+	}
+
 }

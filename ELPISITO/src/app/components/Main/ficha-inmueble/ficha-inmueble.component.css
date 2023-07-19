@@ -1,0 +1,34 @@
+.ficha {
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.imagen-piso {
+  max-width: 100%;
+}
+
+.contenedor-iconos {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: var(--color-gris);
+  padding: 3px 15px 3px 0;
+  border-radius: 10px;
+}
+
+.numero-elementos {
+  font-size: 1.5rem;
+  padding-right: 2px;
+}
+
+.contenedor-banhos,
+.contenedor-habitaciones,
+.contenedor-altura {
+  display: flex;
+  align-items: center;
+}
+
+.icono {
+  height: 24px;
+}

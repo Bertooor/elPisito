@@ -1,0 +1,30 @@
+<article class="ficha">
+  <img class="imagen-piso" src="assets/img/no-image.jpg" alt="imagen casa" />
+  <h3 class="titular">{{ recibeDatos.titular }}</h3>
+  <p class="precio">{{ recibeDatos.precio }} €</p>
+
+  <footer class="contenedor-iconos">
+    <div class="contenedor-banhos">
+      <span class="numero-elementos">{{ recibeDatos.nbanhos }}</span>
+      <img class="icono" src="assets/img/004-bathtub.svg" alt="icono baño" />
+    </div>
+
+    <div class="contenedor-habitaciones">
+      <span class="numero-elementos">{{ recibeDatos.nhabitaciones }}</span>
+      <img
+        class="icono"
+        src="assets/img/017-bed.svg"
+        alt="icono habitaciones"
+      />
+    </div>
+
+    <div class="contenedor-altura">
+      <span class="numero-elementos">{{ recibeDatos.planta }}</span>
+      <img
+        class="icono"
+        src="assets/img/011-office building.svg"
+        alt="icono altura"
+      />
+    </div>
+  </footer>
+</article>

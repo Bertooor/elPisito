@@ -1,13 +1,7 @@
-.icono {
-  height: 24px;
+.contenedor {
+  padding: 20px 0;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
-.numero-elementos {
-  font-size: 1.5rem;
-  padding-right: 2px;
-}
 
-.contenedor-banhos {
-  display: flex;
-  align-items: center;
-}
