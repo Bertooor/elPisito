@@ -1,0 +1,15 @@
+.contenedor-logo {
+  display: flex;
+  align-items: center;
+}
+
+.texto-logo {
+  font-size: 1.2rem;
+  padding-left: 0.5rem;
+  font-weight: bold;
+  color: var(--color-azul);
+}
+
+.imagen-logo {
+  height: 30px;
+}

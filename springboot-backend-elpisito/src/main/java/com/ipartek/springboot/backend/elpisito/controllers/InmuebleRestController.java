@@ -34,11 +34,13 @@ public class InmuebleRestController {
 		return inmuebleService.findAllActive();
 	};
 	
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@GetMapping("/inmuebles-portada")
 	List<Inmueble> findAllPortada(){
 		return inmuebleService.findAllPortada();
 	};
 	
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@GetMapping("/inmueble/{id}")
 	public Inmueble findById(@PathVariable Long id) {
 		return inmuebleService.findById(id);

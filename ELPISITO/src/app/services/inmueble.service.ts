@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GLOBAL } from './global';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inmueble } from '../models/entity';
 import { Observable } from 'rxjs';
 
@@ -10,9 +10,26 @@ import { Observable } from 'rxjs';
 export class InmuebleService {
   url: string = GLOBAL.url;
 
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+  ) {}
 
   getInmuebles(): Observable<Inmueble[]> {
-    return this._http.get<Inmueble[]>(this.url + 'inmuebles');
+    let headers = new HttpHeaders().set('content-type', 'application/json');
+    return this._http.get<Inmueble[]>(this.url + 'inmuebles', { headers });
+  }
+
+  getInmueblesPortada(): Observable<Inmueble[]> {
+    let headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this._http.get<Inmueble[]>(this.url + 'inmuebles-portada', {
+      headers,
+    });
+  }
+
+  getInmueble(id: number): Observable<Inmueble> {
+    let headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this._http.get<Inmueble>(this.url + 'inmueble/' + id, { headers });
   }
 }

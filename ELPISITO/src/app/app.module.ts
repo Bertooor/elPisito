@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,16 @@ import { MenuFooterComponent } from './components/Footer/menu-footer/menu-footer
 import { PieFooterComponent } from './components/Footer/pie-footer/pie-footer.component';
 import { ListHomeComponent } from './components/Main/list-home/list-home.component';
 import { FichaInmuebleComponent } from './components/Main/ficha-inmueble/ficha-inmueble.component';
+import { CarouselFichaComponent } from './components/Main/carousel-ficha/carousel-ficha.component';
+import { EurosPipe } from './pipes/euros.pipe';
+import { NoImageDirective } from './directives/no-image.directive';
+import { PreloaderComponent } from './preloader/preloader.component';
+import { CarouselHomeComponent } from './components/Header/carousel-home/carousel-home.component';
+import { DetailInmuebleComponent } from './components/Main/detail-inmueble/detail-inmueble.component';
+import { AddTipoComponent } from './components/Main/add-tipo/add-tipo.component';
+import { ListTipoComponent } from './components/Main/list-tipo/list-tipo.component';
+import { EditTipoComponent } from './components/Main/edit-tipo/edit-tipo.component';
+import { ActivoPipe } from './pipes/activo.pipe';
 
 @NgModule({
   declarations: [
@@ -28,8 +39,18 @@ import { FichaInmuebleComponent } from './components/Main/ficha-inmueble/ficha-i
     PieFooterComponent,
     ListHomeComponent,
     FichaInmuebleComponent,
+    CarouselFichaComponent,
+    EurosPipe,
+    NoImageDirective,
+    PreloaderComponent,
+    CarouselHomeComponent,
+    DetailInmuebleComponent,
+    AddTipoComponent,
+    ListTipoComponent,
+    EditTipoComponent,
+    ActivoPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

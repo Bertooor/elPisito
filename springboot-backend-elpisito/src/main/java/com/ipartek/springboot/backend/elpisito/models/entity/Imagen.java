@@ -3,6 +3,8 @@ package com.ipartek.springboot.backend.elpisito.models.entity;
 import java.io.Serial;
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -38,6 +40,9 @@ public class Imagen implements Serializable{
 
 	@Column
 	private String nombre;
+	
+	@Column(columnDefinition="integer default 1")
+	private String activo;
 
 	@JsonIgnore
 	@ManyToOne

@@ -40,6 +40,9 @@ public class Tipo implements Serializable{
 	@Column
 	private String nombre; // Piso, finca, lonja
 	
+	@Column
+	private Integer activo;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="tipo", cascade=CascadeType.ALL)
 	private Set<Inmueble> inmuebles;

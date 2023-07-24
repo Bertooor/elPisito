@@ -1,0 +1,31 @@
+<app-preloader *ngIf="!inmueble"></app-preloader>
+
+<div class="contenedor">
+  <h1>{{ inmueble.titular }}</h1>
+  <app-carousel-ficha [recibeDatosFicha]="inmueble"></app-carousel-ficha>
+
+  <div class="contenedor-iconos">
+    <div class="contenedor-banhos">
+      <span class="numero-elementos">{{ inmueble.nbanhos }}</span>
+      <img class="icono" src="assets/img/004-bathtub.svg" alt="icono baño" />
+    </div>
+
+    <div class="contenedor-habitaciones">
+      <span class="numero-elementos">{{ inmueble.nhabitaciones }}</span>
+      <img
+        class="icono"
+        src="assets/img/017-bed.svg"
+        alt="icono habitaciones"
+      />
+    </div>
+
+    <div class="contenedor-altura">
+      <span class="numero-elementos">{{ inmueble.planta }}</span>
+      <img
+        class="icono"
+        src="assets/img/011-office building.svg"
+        alt="icono altura"
+      />
+    </div>
+  </div>
+</div>

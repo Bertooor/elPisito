@@ -39,6 +39,9 @@ public class Provincia implements Serializable{
 	@Column
 	private String nombre;
 	
+	@Column
+	private Integer activo;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="provincia")
 	private Set<Poblacion> poblaciones;

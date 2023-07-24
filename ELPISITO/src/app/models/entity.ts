@@ -1,17 +1,20 @@
 export interface Provincia {
   id?: number;
   nombre: string;
+  activo: any;
 }
 
 export interface Poblacion {
   id?: number;
   nombre: string;
   provincia: Provincia;
+  activo: any;
 }
 
 export interface Tipo {
   id?: number;
   nombre: string;
+  activo: any;
 }
 
 export interface Inmueble {

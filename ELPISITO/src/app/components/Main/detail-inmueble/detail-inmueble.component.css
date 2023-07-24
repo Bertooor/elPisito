@@ -1,0 +1,22 @@
+.contenedor-iconos {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: var(--color-gris);
+}
+
+.numero-elementos {
+  font-size: 1.5rem;
+  padding-right: 2px;
+}
+
+.contenedor-banhos,
+.contenedor-habitaciones,
+.contenedor-altura {
+  display: flex;
+  align-items: center;
+}
+
+.icono {
+  height: 24px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { InmuebleService } from 'src/app/services/inmueble.service';
 
 @Component({
@@ -10,22 +11,25 @@ export class ListHomeComponent implements OnInit {
   titular: string = 'Los más interesantes...';
   aDatos: any[] = [];
 
-  constructor(private _inmuebleService: InmuebleService) {}
+  constructor(
+    private _inmuebleService: InmuebleService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getDatos();
   }
 
   getDatos(): void {
-    console.log(
-      this._inmuebleService.getInmuebles().subscribe({
-        next: (datos) => {
-          console.log('datos: ', datos);
-          this.aDatos = datos;
-        },
-        error: (error) => {},
-        complete: () => {},
-      })
-    );
+    this._inmuebleService.getInmueblesPortada().subscribe({
+      next: (datos) => {
+        console.log('list-home: ', datos);
+        this.aDatos = datos;
+      },
+      error: (error) => {
+        this._router.navigate(['/error']);
+      },
+      complete: () => {},
+    });
   }
 }
