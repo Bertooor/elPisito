@@ -30,8 +30,23 @@ public class TipoRestController {
 	
 	@CrossOrigin(origins = {"http://localhost:4200"})
 	@GetMapping("/tipos")
-	public List<Tipo> findAll(){
-		return tipoService.findAll();
+	public ResponseEntity<?> findAll(){
+		
+		
+	Map<String, Object> response = new HashMap<>();
+	
+	List<Tipo> resultado = null;
+		
+		try {
+			
+			resultado = tipoService.findAll();
+		} catch(DataAccessException e) {
+			
+			response.put("mensaje", "Error al realizar la petición en la BBDD");
+			response.put("error", e.getMessage().concat(": " ).concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<Tipo>>(resultado, HttpStatus.OK);
 	};
 	
 	@CrossOrigin(origins = {"http://localhost:4200"})
@@ -82,12 +97,46 @@ public class TipoRestController {
 	
 	@CrossOrigin(origins = {"http://localhost:4200"})
 	@PutMapping("/tipo")
-	public Tipo update(@RequestBody Tipo tipo) {
-		return tipoService.save(tipo);
+	public ResponseEntity<?> update(@RequestBody Tipo tipo) {
+		
+		Long id = tipo.getId();
+		Tipo tipoActual = tipoService.findById(id);
+		
+		Tipo tipoUpdated = null;
+		
+		Map<String, Object> response = new HashMap<>();
+		
+		if (tipoActual == null) {
+			response.put("mensaje", "Error: no se pudo editar el tipo con Id: ".concat(id.toString().concat(" no existe en la BBDD")));
+			
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		
+		try {
+			tipoUpdated = tipoService.save(tipoActual);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al actualizar el tipo en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El tipo ha sido actualizado con éxito");
+		response.put("mensaje", tipoUpdated);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/tipo/{id}")
-	public void delete(@PathVariable Long id) {
-		tipoService.deleteById(id);
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			tipoService.deleteById(id);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al elimimar el tipo de la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El tipo ha sido eliminado con éxito de la BBDD");
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+		
 	}
 }

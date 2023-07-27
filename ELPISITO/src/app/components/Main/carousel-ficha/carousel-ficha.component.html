@@ -1,21 +1,42 @@
-<div id="carouselFicha{{ recibeDatosFicha.id }}" class="carousel slide" data-bs-ride="carousel">
+<div
+  id="carouselFicha{{ recibeDatosFicha.id }}"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
   <div class="carousel-inner">
-    <!-- <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="..." />
-    </div> -->
-    <div [ngClass]="{ 'carousel-item': true, 'active': i }" *ngFor="let imagen of recibeDatosFicha.imagenes; let i = first">
-      <img appNoImage src="{{ urlImagen + imagen.nombre }}" class="d-block w-100" alt="imagen piso" />
+    <div
+      [ngClass]="{ 'carousel-item': true, active: i }"
+      *ngFor="let imagen of recibeDatosFicha.imagenes; let i = first"
+    >
+      <img
+        appNoImage
+        src="{{ urlImagen + imagen.nombre }}"
+        class="d-block w-100"
+        alt="imagen piso"
+      />
     </div>
 
     <div *ngIf="recibeDatosFicha.imagenes.length == 0">
-      <img class="no-imagen" src="assets/img/no-image.jpg" alt="no imagen">
+      <img class="no-imagen" src="assets/img/no-image.jpg" alt="no imagen" />
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselFicha' + recibeDatosFicha.id" data-bs-slide="prev">
+
+  <button
+    class="carousel-control-prev"
+    type="button"
+    [attr.data-bs-target]="'#carouselFicha' + recibeDatosFicha.id"
+    data-bs-slide="prev"
+  >
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselFicha' + recibeDatosFicha.id" data-bs-slide="next">
+
+  <button
+    class="carousel-control-next"
+    type="button"
+    [attr.data-bs-target]="'#carouselFicha' + recibeDatosFicha.id"
+    data-bs-slide="next"
+  >
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>

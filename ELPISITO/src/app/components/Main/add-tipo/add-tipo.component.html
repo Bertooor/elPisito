@@ -1,12 +1,7 @@
 <div class="contenedor">
   <h1>Añadir tipo</h1>
 
-  <form
-    class="mx-auto"
-    style="max-width: 25rem"
-    #form="ngForm"
-    (ngSubmit)="add()"
-  >
+  <form class="mx-auto" #form="ngForm" (ngSubmit)="add()">
     <div class="mb-3">
       <label for="tipo">TIPO*:</label>
       <input

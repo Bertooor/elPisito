@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GLOBAL } from './global';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Inmueble } from '../models/entity';
 import { Observable } from 'rxjs';
 
@@ -10,26 +10,25 @@ import { Observable } from 'rxjs';
 export class InmuebleService {
   url: string = GLOBAL.url;
 
-  constructor(
-    private _http: HttpClient,
-  ) {}
+  constructor(private _http: HttpClient) {}
 
   getInmuebles(): Observable<Inmueble[]> {
-    let headers = new HttpHeaders().set('content-type', 'application/json');
-    return this._http.get<Inmueble[]>(this.url + 'inmuebles', { headers });
+    return this._http.get<Inmueble[]>(this.url + 'inmuebles');
   }
 
   getInmueblesPortada(): Observable<Inmueble[]> {
-    let headers = new HttpHeaders().set('content-type', 'application/json');
-
-    return this._http.get<Inmueble[]>(this.url + 'inmuebles-portada', {
-      headers,
-    });
+    return this._http.get<Inmueble[]>(this.url + 'inmuebles-portada');
   }
 
   getInmueble(id: number): Observable<Inmueble> {
-    let headers = new HttpHeaders().set('content-type', 'application/json');
+    return this._http.get<Inmueble>(this.url + 'inmueble/' + id);
+  }
 
-    return this._http.get<Inmueble>(this.url + 'inmueble/' + id, { headers });
+  addInmueble(inmueble: Inmueble): Observable<Inmueble> {
+    return this._http.post<Inmueble>(this.url + 'inmueble', inmueble);
+  }
+
+  updateInmueble(inmueble: Inmueble): Observable<Inmueble> {
+    return this._http.put<Inmueble>(this.url + 'inmueble', inmueble);
   }
 }

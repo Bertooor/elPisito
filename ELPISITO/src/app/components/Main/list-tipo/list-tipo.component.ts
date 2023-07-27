@@ -22,7 +22,9 @@ export class ListTipoComponent implements OnInit {
         this.aDatos = datos;
         console.log('getTipos: ', datos);
       },
-      error: (error) => {},
+      error: (error) => {
+        this._router.navigate(['/error']);
+      },
       complete: () => {},
     });
   }

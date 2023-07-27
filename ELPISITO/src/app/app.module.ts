@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,16 @@ import { AddTipoComponent } from './components/Main/add-tipo/add-tipo.component'
 import { ListTipoComponent } from './components/Main/list-tipo/list-tipo.component';
 import { EditTipoComponent } from './components/Main/edit-tipo/edit-tipo.component';
 import { ActivoPipe } from './pipes/activo.pipe';
+import { AddProvinciaComponent } from './components/Main/add-provincia/add-provincia.component';
+import { ApiInterceptor } from './utils/api.interceptor';
+import { ListProvinciaComponent } from './components/Main/list-provincia/list-provincia.component';
+import { EditProvinciaComponent } from './components/Main/edit-provincia/edit-provincia.component';
+import { AddPoblacionComponent } from './components/Main/add-poblacion/add-poblacion.component';
+import { ListPoblacionComponent } from './components/Main/list-poblacion/list-poblacion.component';
+import { EditPoblacionComponent } from './components/Main/edit-poblacion/edit-poblacion.component';
+import { AddInmuebleComponent } from './components/Main/add-inmueble/add-inmueble.component';
+import { ListInmuebleComponent } from './components/Main/list-inmueble/list-inmueble.component';
+import { EditInmuebleComponent } from './components/Main/edit-inmueble/edit-inmueble.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +59,24 @@ import { ActivoPipe } from './pipes/activo.pipe';
     ListTipoComponent,
     EditTipoComponent,
     ActivoPipe,
+    AddProvinciaComponent,
+    ListProvinciaComponent,
+    EditProvinciaComponent,
+    AddPoblacionComponent,
+    ListPoblacionComponent,
+    EditPoblacionComponent,
+    AddInmuebleComponent,
+    ListInmuebleComponent,
+    EditInmuebleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

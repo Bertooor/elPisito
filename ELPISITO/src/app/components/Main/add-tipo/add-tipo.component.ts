@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tipo } from 'src/app/models/entity';
 import { TipoService } from 'src/app/services/tipo.service';
@@ -18,6 +18,7 @@ export class AddTipoComponent {
 
   add(): void {
     this.tipo.nombre = this.tipo.nombre.toUpperCase();
+    this.tipo.activo = 1;
     this._tipoService.addTipo(this.tipo).subscribe({
       next: (datos) => {
         console.log('addTipo: ', datos);

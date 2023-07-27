@@ -3,8 +3,6 @@ package com.ipartek.springboot.backend.elpisito.models.entity;
 import java.io.Serial;
 import java.io.Serializable;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -28,8 +26,8 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "imagenes")
-public class Imagen implements Serializable{
-	
+public class Imagen implements Serializable {
+
 	@Serial
 	private static final long serialVersionUID = 9211854766528804854L;
 
@@ -40,15 +38,13 @@ public class Imagen implements Serializable{
 
 	@Column
 	private String nombre;
-	
-	@Column(columnDefinition="integer default 1")
+
+	@Column(columnDefinition = "integer default 1")
 	private String activo;
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="inmueble")
+	@JoinColumn(name = "inmueble")
 	private Inmueble inmueble;
-	
-	
 
 }
