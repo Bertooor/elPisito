@@ -113,7 +113,7 @@ public class TipoRestController {
 		}
 		
 		try {
-			tipoUpdated = tipoService.save(tipoActual);
+			tipoUpdated = tipoService.save(tipo);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al actualizar el tipo en la BBDD");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -124,6 +124,7 @@ public class TipoRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@DeleteMapping("/tipo/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Map<String, Object> response = new HashMap<>();

@@ -1,8 +1,13 @@
 package com.ipartek.springboot.backend.elpisito.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,45 +24,156 @@ import com.ipartek.springboot.backend.elpisito.models.services.IInmuebleService;
 @RestController
 @RequestMapping("/api")
 public class InmuebleRestController {
-	
+
 	@Autowired
 	private IInmuebleService inmuebleService;
-	
-	@CrossOrigin(origins = {"http://localhost:4200"})
+
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/inmuebles")
-	List<Inmueble> findAll(){
-		return inmuebleService.findAll();
+	public ResponseEntity<?> findAll() {
+		Map<String, Object> response = new HashMap<>();
+
+		List<Inmueble> resultado = null;
+		try {
+
+			resultado = inmuebleService.findAll();
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al realizar la petición en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<Inmueble>>(resultado, HttpStatus.OK);
 	};
-	
+
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@GetMapping("/inmuebles-activos")
-	List<Inmueble> findAllActive(){
-		return inmuebleService.findAllActive();
+	public ResponseEntity<?> findAllActive() {
+		Map<String, Object> response = new HashMap<>();
+
+		List<Inmueble> resultado = null;
+
+		try {
+			resultado = inmuebleService.findAllActive();
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la petición en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<Inmueble>>(resultado, HttpStatus.OK);
 	};
-	
-	@CrossOrigin(origins = {"http://localhost:4200"})
+
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/inmuebles-portada")
-	List<Inmueble> findAllPortada(){
-		return inmuebleService.findAllPortada();
+	public ResponseEntity<?> findAllPortada() {
+		Map<String, Object> response = new HashMap<>();
+
+		List<Inmueble> resultado = null;
+
+		try {
+			resultado = inmuebleService.findAllPortada();
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la petición en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<Inmueble>>(resultado, HttpStatus.OK);
+
 	};
-	
-	@CrossOrigin(origins = {"http://localhost:4200"})
+
+	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/inmueble/{id}")
-	public Inmueble findById(@PathVariable Long id) {
-		return inmuebleService.findById(id);
+	public ResponseEntity<?> findById(@PathVariable Long id) {
+
+		Inmueble inmueble = null;
+
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+
+			inmueble = inmuebleService.findById(id);
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al realizar la consulta en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		if (inmueble == null) {
+			response.put("mensaje", "El inmueble ID: " + id.toString() + " no existe en la BBDD");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Inmueble>(inmueble, HttpStatus.OK);
+
 	}
-	
+
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@PostMapping("/inmueble")
-	public Inmueble create(@RequestBody Inmueble inmueble) {
-		return inmuebleService.save(inmueble);
+	public ResponseEntity<?> create(@RequestBody Inmueble inmueble) {
+
+		Inmueble inmuebleNew = null;
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+
+			inmuebleNew = inmuebleService.save(inmueble);
+
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "Error al crear un tipo en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El Inmueble " + inmuebleNew.getId() + " ha sido creado con éxito");
+		response.put("inmueble", inmuebleNew);
+		return new ResponseEntity<Inmueble>(inmuebleNew, HttpStatus.CREATED);
 	}
-	
+
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@PutMapping("/inmueble")
-	public Inmueble update(@RequestBody Inmueble inmueble) {
-		return inmuebleService.save(inmueble);
+	public ResponseEntity<?> update(@RequestBody Inmueble inmueble) {
+
+		Long id = inmueble.getId();
+		Inmueble inmuebleActual = inmuebleService.findById(id);
+
+		Inmueble inmuebleUpdated = null;
+
+		Map<String, Object> response = new HashMap<>();
+
+		if (inmuebleActual == null) {
+			response.put("mensaje", "Error: no se pudo editar el inmueble con Id: "
+					.concat(id.toString().concat(" no existe en la BBDD")));
+
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+
+		try {
+			inmuebleUpdated = inmuebleService.save(inmueble);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al actualizar el tipo en la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El inmueble ha sido actualizado con éxito");
+		response.put("mensaje", inmuebleUpdated);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
-	
+
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@DeleteMapping("/inmueble/{id}")
-	public void delete(@PathVariable Long id) {
-		inmuebleService.deleteById(id);
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			inmuebleService.deleteById(id);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al elimimar el inmueble de la BBDD");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "El inmueble ha sido eliminado con éxito de la BBDD");
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	
 	}
 }
