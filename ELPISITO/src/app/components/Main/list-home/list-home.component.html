@@ -1,10 +1,12 @@
 <app-preloader *ngIf="!aDatos"></app-preloader>
 
 <section class="contenedor" *ngIf="aDatos">
-  <h2>{{ titular }}</h2>
+  <h2 class="titular">{{ titular }}</h2>
 
-  <app-ficha-inmueble
-    *ngFor="let inmueble of aDatos"
-    [recibeDatos]="inmueble"
-  ></app-ficha-inmueble>
+  <div class="inmuebles">
+    <app-ficha-inmueble
+      *ngFor="let inmueble of aDatos"
+      [recibeDatos]="inmueble"
+    ></app-ficha-inmueble>
+  </div>
 </section>

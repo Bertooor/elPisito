@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipartek.springboot.backend.elpisito.models.entity.Poblacion;
-import com.ipartek.springboot.backend.elpisito.models.entity.Tipo;
 import com.ipartek.springboot.backend.elpisito.models.services.IPoblacionService;
 
 @RestController

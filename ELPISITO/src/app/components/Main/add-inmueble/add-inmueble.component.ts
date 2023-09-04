@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Inmueble } from 'src/app/models/entity';
 import { InmuebleService } from 'src/app/services/inmueble.service';
 import { PoblacionService } from 'src/app/services/poblacion.service';
-import { ProvinciaService } from 'src/app/services/provincia.service';
 import { TipoService } from 'src/app/services/tipo.service';
 
 @Component({
@@ -12,6 +11,10 @@ import { TipoService } from 'src/app/services/tipo.service';
   styleUrls: ['./add-inmueble.component.css'],
 })
 export class AddInmuebleComponent implements OnInit {
+  nFases: number = 2;
+  cargaCompletada: Boolean = false;
+  fasesCargadas: number = 0;
+
   aPoblaciones: any[];
   aTipos: any[];
 
@@ -76,7 +79,9 @@ export class AddInmuebleComponent implements OnInit {
       error: (error) => {
         this._router.navigate(['/error']);
       },
-      complete: () => {},
+      complete: () => {
+        this.faseCarga();
+      },
     });
 
     this._tipoService.getTipos().subscribe({
@@ -87,11 +92,21 @@ export class AddInmuebleComponent implements OnInit {
       error: (error) => {
         this._router.navigate(['/error']);
       },
-      complete: () => {},
+      complete: () => {
+        this.faseCarga();
+      },
     });
   }
 
   add(): void {
+    this.inmueble.ascensor = Number(this.inmueble.ascensor);
+    this.inmueble.jardin = Number(this.inmueble.jardin);
+    this.inmueble.amueblado = Number(this.inmueble.amueblado);
+    this.inmueble.trastero = Number(this.inmueble.trastero);
+    this.inmueble.piscina = Number(this.inmueble.piscina);
+    this.inmueble.portada = Number(this.inmueble.portada);
+    this.inmueble.tendedero = Number(this.inmueble.tendedero);
+
     this._inmuebleService.addInmueble(this.inmueble).subscribe({
       next: (datos) => {
         console.log('addInmueble: ', datos);
@@ -103,5 +118,13 @@ export class AddInmuebleComponent implements OnInit {
         this._router.navigate(['/list-inmueble']);
       },
     });
+  }
+
+  faseCarga(): void {
+    this.fasesCargadas++;
+
+    if (this.fasesCargadas === this.nFases) {
+      this.cargaCompletada = true;
+    }
   }
 }

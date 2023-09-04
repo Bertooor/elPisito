@@ -4,4 +4,23 @@
   margin: 0 auto;
 }
 
+.titular {
+  text-align: center;
+  animation: girarTexto 4s linear infinite;
+  color: var(--color-amarillo);
+}
 
+@keyframes girarTexto {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.inmuebles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

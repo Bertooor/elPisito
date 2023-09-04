@@ -1,1 +1,61 @@
-<p>list-inmueble works!</p>
+<app-preloader *ngIf="!aDatos"></app-preloader>
+
+<div class="contenedor" *ngIf="aDatos">
+  <h1>Listado de inmuebles</h1>
+
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">TIPO</th>
+          <th scope="col">VIA</th>
+          <th scope="col">NOMBRE CALLE</th>
+          <th scope="col">NÚMERO</th>
+          <th scope="col">PLANTA</th>
+          <th scope="col">PUERTA</th>
+          <th class="activo" scope="col">ACTIVO</th>
+          <th scope="col">EDITAR</th>
+          <th scope="col">IMAGEN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dato of aDatos">
+          <th scope="row">{{ dato.id }}</th>
+          <td>{{ dato.tipo.nombre }}</td>
+          <td>{{ dato.via }}</td>
+          <td>{{ dato.nombreVia }}</td>
+          <td>{{ dato.numero }}</td>
+          <td>{{ dato.planta }}</td>
+          <td>{{ dato.puerta }}</td>
+          <td
+            [ngClass]="{
+              'color-rojo': dato.activo == 0,
+              'color-verde': dato.activo == 1
+            }"
+          >
+            {{ dato.activo | activo }}
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              [routerLink]="['/edit-inmueble', dato.id]"
+            >
+              Editar
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              [routerLink]="['/add-imagen', dato.id]"
+            >
+              Añadir imagen
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

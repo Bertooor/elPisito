@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ipartek.springboot.backend.elpisito.models.entity.Provincia;
-import com.ipartek.springboot.backend.elpisito.models.entity.Tipo;
 import com.ipartek.springboot.backend.elpisito.models.services.IProvinciaService;
 
 @RestController

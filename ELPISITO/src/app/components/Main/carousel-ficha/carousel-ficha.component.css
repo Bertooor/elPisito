@@ -1,0 +1,8 @@
+div.noimagen {
+  display: grid;
+  place-content: center;
+}
+
+img.no-imagen {
+  max-width: 100%;
+}
