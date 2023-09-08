@@ -120,7 +120,7 @@ public class UsuarioRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "El usuario ha sido actualizado con éxito");
-		response.put("mensaje", usuarioUpdated);
+		response.put("usuario", usuarioUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 

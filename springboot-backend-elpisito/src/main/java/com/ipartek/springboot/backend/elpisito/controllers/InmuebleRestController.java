@@ -155,7 +155,7 @@ public class InmuebleRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "El inmueble ha sido actualizado con éxito");
-		response.put("mensaje", inmuebleUpdated);
+		response.put("inmueble", inmuebleUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 

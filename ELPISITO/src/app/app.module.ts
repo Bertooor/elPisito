@@ -35,6 +35,10 @@ import { EditPoblacionComponent } from './components/Main/edit-poblacion/edit-po
 import { AddInmuebleComponent } from './components/Main/add-inmueble/add-inmueble.component';
 import { ListInmuebleComponent } from './components/Main/list-inmueble/list-inmueble.component';
 import { EditInmuebleComponent } from './components/Main/edit-inmueble/edit-inmueble.component';
+import { AddImagenComponent } from './components/Main/add-imagen/add-imagen.component';
+import { AmuebladoPipe } from './pipes/amueblado.pipe';
+import { MinusculasPipe } from './pipes/minusculas.pipe';
+import { SinoPipe } from './pipes/sino.pipe';
 
 @NgModule({
   declarations: [
@@ -68,6 +72,10 @@ import { EditInmuebleComponent } from './components/Main/edit-inmueble/edit-inmu
     AddInmuebleComponent,
     ListInmuebleComponent,
     EditInmuebleComponent,
+    AddImagenComponent,
+    AmuebladoPipe,
+    MinusculasPipe,
+    SinoPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

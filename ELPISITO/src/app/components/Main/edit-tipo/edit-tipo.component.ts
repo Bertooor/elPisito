@@ -29,7 +29,7 @@ export class EditTipoComponent implements OnInit {
     this._route.params.subscribe({
       next: (datos) => {
         this.id = datos['id'];
-        console.log('getDatos: ', datos);
+        console.log('idTipo: ', datos);
       },
       error: (error) => {
         this._router.navigate(['/error']);

@@ -9,11 +9,7 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">TIPO</th>
-          <th scope="col">VIA</th>
-          <th scope="col">NOMBRE CALLE</th>
-          <th scope="col">NÚMERO</th>
-          <th scope="col">PLANTA</th>
-          <th scope="col">PUERTA</th>
+          <th scope="col">DIRECCIÓN</th>
           <th class="activo" scope="col">ACTIVO</th>
           <th scope="col">EDITAR</th>
           <th scope="col">IMAGEN</th>
@@ -23,11 +19,10 @@
         <tr *ngFor="let dato of aDatos">
           <th scope="row">{{ dato.id }}</th>
           <td>{{ dato.tipo.nombre }}</td>
-          <td>{{ dato.via }}</td>
-          <td>{{ dato.nombreVia }}</td>
-          <td>{{ dato.numero }}</td>
-          <td>{{ dato.planta }}</td>
-          <td>{{ dato.puerta }}</td>
+          <td>
+            {{ dato.via }} {{ dato.nombreVia }} {{ dato.numero }}
+            {{ dato.planta }}º{{ dato.puerta }}
+          </td>
           <td
             [ngClass]="{
               'color-rojo': dato.activo == 0,

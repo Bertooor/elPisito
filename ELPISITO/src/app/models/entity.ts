@@ -47,4 +47,5 @@ export interface Inmueble {
   amueblado: any;
   trastero: any;
   tipo: Tipo;
+  direccionCompleta?: String;
 }

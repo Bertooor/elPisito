@@ -53,7 +53,7 @@ public class Inmueble implements Serializable{
 	@Column 
 	private String titular; // Encabezado para inmueble
 	
-	@Column
+	@Column(name = "nombre_via")
 	private String nombreVia;
 	
 	@Column 
@@ -123,7 +123,7 @@ public class Inmueble implements Serializable{
 	private Integer portada; // 0 no aparece en portada, 1 aparece en portada
 	
 	@Column
-	private Integer activo; // 0 no activo, 1 activo
+	private Integer activo = 1; // 0 no activo, 1 activo
 	
 	
 }

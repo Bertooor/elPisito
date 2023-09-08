@@ -84,7 +84,7 @@ public class ProvinciaRestController {
 
 		} catch (DataAccessException e) {
 
-			response.put("mensaje", "Error al crear un tipo en la BBDD");
+			response.put("mensaje", "Error al crear una provincia en la BBDD");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -119,7 +119,7 @@ public class ProvinciaRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "La provincia ha sido actualizada con éxito");
-		response.put("mensaje", provinciaUpdated);
+		response.put("provincia", provinciaUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 

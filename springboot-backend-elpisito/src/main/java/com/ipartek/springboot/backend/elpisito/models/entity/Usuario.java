@@ -32,16 +32,19 @@ public class Usuario implements Serializable{
 	@Column
 	private Long id;
 	
-	@Column
+	@Column(unique = true)
 	private String user;
 	
 	@Column 
 	private String password;
 	
-	@Column 
+	@Column(unique = true) 
 	private String email;
 	
 	@Column
-	private Integer activo;
+	private String rol;
+	
+	@Column
+	private Integer activo = 1;
 	
 }

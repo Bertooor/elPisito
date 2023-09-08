@@ -120,7 +120,7 @@ public class TipoRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "El tipo ha sido actualizado con éxito");
-		response.put("mensaje", tipoUpdated);
+		response.put("tipo", tipoUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	

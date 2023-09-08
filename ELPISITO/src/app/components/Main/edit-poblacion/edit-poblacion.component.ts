@@ -42,7 +42,7 @@ export class EditPoblacionComponent implements OnInit {
     this._route.params.subscribe({
       next: (datos) => {
         this.id = datos['id'];
-        console.log('getDatos: ', datos);
+        console.log('idPoblación: ', datos);
       },
       error: (error) => {
         this._router.navigate(['/error']);

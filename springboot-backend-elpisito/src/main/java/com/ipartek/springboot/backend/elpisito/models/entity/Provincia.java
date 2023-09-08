@@ -40,7 +40,7 @@ public class Provincia implements Serializable{
 	private String nombre;
 	
 	@Column
-	private Integer activo;
+	private Integer activo = 1;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="provincia")

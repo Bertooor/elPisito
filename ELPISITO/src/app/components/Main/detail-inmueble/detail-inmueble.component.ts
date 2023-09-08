@@ -25,7 +25,7 @@ export class DetailInmuebleComponent implements OnInit {
     this._route.params.subscribe({
       next: (datos) => {
         this.id = datos['id'];
-        console.log('idInmueble: ', this.id);
+        console.log('idDetailInmueble: ', this.id);
       },
       error: (error) => {
         this._router.navigate(['/error']);
@@ -36,7 +36,7 @@ export class DetailInmuebleComponent implements OnInit {
     this._inmuebleService.getInmueble(this.id).subscribe({
       next: (datos) => {
         this.inmueble = datos;
-        console.log('Inmueble: ', this.inmueble);
+        console.log('InmuebleDetail: ', this.inmueble);
       },
 
       error: (error) => {

@@ -39,8 +39,8 @@ public class Imagen implements Serializable {
 	@Column
 	private String nombre;
 
-	@Column(columnDefinition = "integer default 1")
-	private String activo;
+	@Column
+	private Integer activo=1;
 
 	@JsonIgnore
 	@ManyToOne

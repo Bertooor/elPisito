@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Inmueble } from 'src/app/models/entity';
 import { InmuebleService } from 'src/app/services/inmueble.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { InmuebleService } from 'src/app/services/inmueble.service';
   styleUrls: ['./list-inmueble.component.css'],
 })
 export class ListInmuebleComponent implements OnInit {
-  aDatos: any[];
+  aDatos: Inmueble[];
 
   constructor(
     private _inmuebleService: InmuebleService,
@@ -22,6 +23,11 @@ export class ListInmuebleComponent implements OnInit {
   getDatos(): void {
     this._inmuebleService.getInmuebles().subscribe({
       next: (datos) => {
+        for (let dato of datos) {
+          dato.direccionCompleta = `${dato.via} ${dato.nombreVia} ${dato.numero} ${dato.planta} ${dato.puerta}`;
+          console.log('dato inmueble: ', dato);
+        }
+
         this.aDatos = datos;
         console.log('getInmuebles: ', datos);
       },

@@ -3,6 +3,7 @@ package com.ipartek.springboot.backend.elpisito.models.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ipartek.springboot.backend.elpisito.models.dao.IUsuarioDAO;
@@ -13,6 +14,9 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	
 	@Autowired
 	private IUsuarioDAO usuarioDAO;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public List<Usuario> findAll() {
@@ -28,7 +32,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 
 	@Override
 	public Usuario save(Usuario usuario) {
-		
+		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		return usuarioDAO.save(usuario);
 	}
 

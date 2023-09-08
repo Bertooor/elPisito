@@ -44,7 +44,7 @@ public class Poblacion implements Serializable{
 	private String nombre;
 	
 	@Column
-	private Integer activo;
+	private Integer activo = 1;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="poblacion", cascade=CascadeType.ALL)

@@ -85,11 +85,11 @@ public class PoblacionRestController {
 
 		} catch (DataAccessException e) {
 
-			response.put("mensaje", "Error al crear un tipo en la BBDD");
+			response.put("mensaje", "Error al crear la población en la BBDD");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "La población " + poblacionNew.getNombre() + " ha sido creado con éxito");
+		response.put("mensaje", "La población " + poblacionNew.getNombre() + " ha sido creada con éxito");
 		response.put("poblacion", poblacionNew);
 		return new ResponseEntity<Poblacion>(poblacionNew, HttpStatus.CREATED);
 	}
@@ -120,7 +120,7 @@ public class PoblacionRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje", "La población ha sido actualizada con éxito");
-		response.put("mensaje", poblacionUpdated);
+		response.put("población", poblacionUpdated);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
