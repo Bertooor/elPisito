@@ -18,6 +18,10 @@ public class SecurityConfig {
 			auth.anyRequest().permitAll();
 			//auth.anyRequest().authenticated();
 		}).formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
+		
+		http.cors(cors -> cors.disable());
+		http.csrf(csrf -> csrf.disable());
+		
 		return http.build();
 	}
 	

@@ -42,7 +42,7 @@ public class Usuario implements Serializable{
 	private String email;
 	
 	@Column
-	private String rol;
+	private String rol="ROLE_USER";
 	
 	@Column
 	private Integer activo = 1;

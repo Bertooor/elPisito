@@ -42,7 +42,6 @@ public class MediaRestController {
 		return Map.of("url", url);
 	}
 	
-	@CrossOrigin(origins= {"http://localhost:4200"})
 	@GetMapping("/file/{filename:.+}")
 	public ResponseEntity<Resource> getFile(@PathVariable String filename) throws IOException {
 		Resource file = storageService.loadAsResource(filename);

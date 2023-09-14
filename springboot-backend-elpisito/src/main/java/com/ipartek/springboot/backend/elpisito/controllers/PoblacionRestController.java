@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,6 @@ public class PoblacionRestController {
 	@Autowired
 	private IPoblacionService poblacionService;
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/poblaciones")
 	public ResponseEntity<?> findAll() {
 
@@ -48,7 +46,6 @@ public class PoblacionRestController {
 		return new ResponseEntity<List<Poblacion>>(resultado, HttpStatus.OK);
 	};
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/poblacion/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
 
@@ -72,7 +69,6 @@ public class PoblacionRestController {
 		return new ResponseEntity<Poblacion>(poblacion, HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@PostMapping("/poblacion")
 	public ResponseEntity<?> create(@RequestBody Poblacion poblacion) {
 
@@ -94,7 +90,6 @@ public class PoblacionRestController {
 		return new ResponseEntity<Poblacion>(poblacionNew, HttpStatus.CREATED);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@PutMapping("/poblacion")
 	public ResponseEntity<?> update(@RequestBody Poblacion poblacion) {
 
@@ -124,7 +119,6 @@ public class PoblacionRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@DeleteMapping("/poblacion/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 

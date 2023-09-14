@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,6 @@ public class UsuarioRestController {
 	@Autowired
 	private IUsuarioService usuarioService;
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/usuarios")
 	public ResponseEntity<?> findAll() {
 
@@ -48,7 +46,6 @@ public class UsuarioRestController {
 		return new ResponseEntity<List<Usuario>>(resultado, HttpStatus.OK);
 	};
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/usuario/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
 
@@ -72,7 +69,6 @@ public class UsuarioRestController {
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@PostMapping("/usuario")
 	public ResponseEntity<?> create(@RequestBody Usuario usuario) {
 
@@ -94,7 +90,6 @@ public class UsuarioRestController {
 		return new ResponseEntity<Usuario>(usuarioNew, HttpStatus.CREATED);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@PutMapping("/usuario")
 	public ResponseEntity<?> update(@RequestBody Usuario usuario) {
 
@@ -124,7 +119,6 @@ public class UsuarioRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@DeleteMapping("/usuario/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,6 @@ public class ProvinciaRestController {
 	@Autowired
 	private IProvinciaService provinciaService;
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/provincias")
 	public ResponseEntity<?> findAll() {
 		Map<String, Object> response = new HashMap<>();
@@ -47,7 +45,6 @@ public class ProvinciaRestController {
 		return new ResponseEntity<List<Provincia>>(resultado, HttpStatus.OK);
 	};
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@GetMapping("/provincia/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
 
@@ -71,7 +68,6 @@ public class ProvinciaRestController {
 		return new ResponseEntity<Provincia>(provincia, HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@PostMapping("/provincia")
 	public ResponseEntity<?> create(@RequestBody Provincia provincia) {
 
@@ -93,7 +89,6 @@ public class ProvinciaRestController {
 		return new ResponseEntity<Provincia>(provinciaNew, HttpStatus.CREATED);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@PutMapping("/provincia")
 	public ResponseEntity<?> update(@RequestBody Provincia provincia) {
 
@@ -123,7 +118,6 @@ public class ProvinciaRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
-	@CrossOrigin(origins = { "http://localhost:4200" })
 	@DeleteMapping("/provincia/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 
